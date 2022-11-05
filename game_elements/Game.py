@@ -15,6 +15,7 @@ class Game:
         pygame.display.set_caption("Nightmare Realm mini-game")
         self.clock = pygame.time.Clock()
         self.settings = settings
+        self.sound = pygame.mixer.Sound(self.settings.music)
         self.load("1")
 
     def load(self, level):
@@ -30,6 +31,7 @@ class Game:
 
     def run(self):
         running = True
+        self.sound.play(5)
         while running:
             self.clock.tick(self.settings.FPS)
             for event in pygame.event.get():
