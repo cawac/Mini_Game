@@ -16,7 +16,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.settings = settings
         self.sound = pygame.mixer.Sound(self.settings.music)
-        self.load("1")
+        self.load("2")
 
     def load(self, level):
         with open(f"levels/{level}.json") as json:
@@ -24,7 +24,7 @@ class Game:
             self.screen = pygame.display.set_mode((1, 1))  # change to the real resolution
             self.requirements = Requirements(level["path_to_requirements_bar"], level["requirements"])
             self.board = Board(level["path_to_background_image"], level["position_of_locked_blocks"],
-                               level["requirements"], level["lines"], level["columns"], 0,
+                               level["requirements"], level["columns"], level["lines"], 0,
                                self.requirements.get_rect().height + 10)
             self.screen = pygame.display.set_mode((self.requirements.get_width(),
                                                    self.requirements.get_height() + self.board.get_height() + 10))
