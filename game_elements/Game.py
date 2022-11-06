@@ -16,7 +16,8 @@ class Game:
         self.clock = pygame.time.Clock()
         self.settings = settings
         self.sound = pygame.mixer.Sound(self.settings.music)
-        self.load("2")
+        self.counter_level = 1
+        self.load(str(self.counter_level))
 
     def load(self, level):
         with open(f"levels/{level}.json") as json:
@@ -47,7 +48,11 @@ class Game:
                         pos2 = self.board.get_pos_of_block(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
                         self.board.move(pos1, pos2)
                         if self.is_win():
-                            running = False
+                            self.counter_level += 1
+                            if self.counter_level < 2:
+                                self.load(str(self.counter_level))
+                            else:
+                                running = False
             self.screen.fill((0, 0, 0))
             self.draw()
             pygame.display.flip()
