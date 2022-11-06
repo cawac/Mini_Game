@@ -1,4 +1,4 @@
-from .Block import Block
+from game_elements.Block import Block
 
 
 class NoneBlock(Block):

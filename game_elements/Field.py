@@ -1,5 +1,5 @@
 import pygame
-from .NoneBlock import NoneBlock
+from game_elements.type_of_blocks.NoneBlock import NoneBlock
 from App import Settings
 
 

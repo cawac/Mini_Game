@@ -1,5 +1,5 @@
-from .Field import Field
-from .NoneBlock import NoneBlock
+from game_elements.Field import Field
+from game_elements.type_of_blocks.NoneBlock import NoneBlock
 
 
 class Requirements(Field):

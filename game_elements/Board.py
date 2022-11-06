@@ -1,9 +1,9 @@
 import pygame
 from random import choice
-from .Field import Field
-from .LockedBlock import LockedBlock
-from .MovableBlock import MovableBlock
-from .NoneBlock import NoneBlock
+from game_elements.Field import Field
+from game_elements.type_of_blocks.LockedBlock import LockedBlock
+from game_elements.type_of_blocks.MovableBlock import MovableBlock
+from game_elements.type_of_blocks.NoneBlock import NoneBlock
 
 
 class Board(Field):
