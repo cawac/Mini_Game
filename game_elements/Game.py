@@ -16,7 +16,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.settings = settings
         self.sound = pygame.mixer.Sound(self.settings.music)
-        self.counter_level = 1
+        self.counter_level = 5
         self.load(str(self.counter_level))
 
     def load(self, level):
@@ -48,8 +48,8 @@ class Game:
                         pos2 = self.board.get_pos_of_block(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
                         self.board.move(pos1, pos2)
                         if self.is_win():
-                            self.counter_level += 1
-                            if self.counter_level < 2:
+                            if self.counter_level < 3:
+                                self.counter_level += 1
                                 self.load(str(self.counter_level))
                             else:
                                 running = False

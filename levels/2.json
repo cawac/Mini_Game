@@ -1,6 +1,6 @@
-{"lines": 7, "columns": 5,
-  "position_of_locked_blocks": [[0,1], [0,3], [2,1], [2,3], [4,1], [4,3], [6,1], [6,3]],
-  "requirements": [1, null, 2, null, 3],
+{"lines": 4, "columns": 4,
+  "position_of_locked_blocks": [[0,1], [2,1], [3,1], [2,2]],
+  "requirements": [2, null, null, 3],
   "path_to_requirements_bar": "images/field.png",
   "path_to_background_image": "images/field.png"
 }
