@@ -5,7 +5,7 @@ class Block(sprite.Sprite):
     def __init__(self, x, y, path_to_image):
         super().__init__()
         self.image = image.load(path_to_image).convert_alpha()
-        # self.image.set_colorkey(-1) # Use the upper-left pixel color as transparent
+        self.image.set_colorkey(-1) # Use the upper-left pixel color as transparent
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y

@@ -8,4 +8,4 @@ class Settings:
         with open(path_to_settings, "r") as file:
             config = load(file)
             self.block_rect = Rect.Rect(width=config["block_rect"][2], height=config["block_rect"][3])
-
+            self.music = config["path_to_music"]

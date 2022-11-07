@@ -2,7 +2,6 @@ from game_elements.Requirements import Requirements
 from game_elements.Board import Board
 import pygame
 from json import load
-from game_elements.NoneBlock import NoneBlock
 
 
 class Game:
@@ -15,7 +14,9 @@ class Game:
         pygame.display.set_caption("Nightmare Realm mini-game")
         self.clock = pygame.time.Clock()
         self.settings = settings
-        self.load("1")
+        self.sound = pygame.mixer.Sound(self.settings.music)
+        self.current_level = 0
+        self.load(str(self.current_level))
 
     def load(self, level):
         with open(f"levels/{level}.json") as json:
@@ -23,13 +24,14 @@ class Game:
             self.screen = pygame.display.set_mode((1, 1))  # change to the real resolution
             self.requirements = Requirements(level["path_to_requirements_bar"], level["requirements"])
             self.board = Board(level["path_to_background_image"], level["position_of_locked_blocks"],
-                               level["requirements"], level["lines"], level["columns"], 0,
+                               level["requirements"], level["columns"], level["lines"], 0,
                                self.requirements.get_rect().height + 10)
             self.screen = pygame.display.set_mode((self.requirements.get_width(),
                                                    self.requirements.get_height() + self.board.get_height() + 10))
 
     def run(self):
         running = True
+        self.sound.play(5)
         while running:
             self.clock.tick(self.settings.FPS)
             for event in pygame.event.get():
@@ -45,7 +47,11 @@ class Game:
                         pos2 = self.board.get_pos_of_block(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
                         self.board.move(pos1, pos2)
                         if self.is_win():
-                            running = False
+                            if self.current_level < 4:
+                                self.current_level += 1
+                                self.load(str(self.current_level))
+                            else:
+                                running = False
             self.screen.fill((0, 0, 0))
             self.draw()
             pygame.display.flip()

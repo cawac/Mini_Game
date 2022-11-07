@@ -1,6 +1,6 @@
-from App import App
+from App.App import App
 
 
 if __name__ == '__main__':
-    a = App.App()
+    a = App()
     a.run()
