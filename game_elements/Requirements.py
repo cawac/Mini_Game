@@ -4,6 +4,7 @@ from game_elements.Settings import Settings
 
 
 class Requirements(Field):
+    """class for required blocks"""
     def __init__(self, path_to_background, requirements, x=0, y=0, settings=Settings()):
         super().__init__(path_to_background, len(requirements), 1, x, y)
         for i in range(len(requirements)):

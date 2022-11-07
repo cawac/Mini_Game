@@ -1,4 +1,5 @@
 class Settings:
+    """class for our settings of the game"""
     def __init__(self):
         self.FPS = 60
         self.block_rect = dict()

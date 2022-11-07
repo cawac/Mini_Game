@@ -6,6 +6,7 @@ from game_elements.Settings import Settings
 
 
 class Game:
+    """class for show game and interact with him"""
     def __init__(self, settings=Settings()):
         self.board = None
         self.requirements = None
@@ -20,6 +21,7 @@ class Game:
         self.load(str(self.current_level))
 
     def load(self, level):
+        """function for loading level"""
         with open(f"levels/{level}.json") as json:
             level = load(json)
             self.screen = pygame.display.set_mode((1, 1))
@@ -31,6 +33,7 @@ class Game:
                                                    self.requirements.get_height() + self.board.get_height() + 10))
 
     def run(self):
+        """main loop of the game"""
         running = True
         self.sound.play(5)
         while running:
@@ -40,10 +43,10 @@ class Game:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        pos1 = self.board.get_pos_of_block(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+                        pos1 = pygame.mouse.get_pos()
                 elif event.type == pygame.MOUSEBUTTONUP:
                     if event.button == 1:
-                        pos2 = self.board.get_pos_of_block(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+                        pos2 = pygame.mouse.get_pos()
                     self.board.move(pos1, pos2)
                     if self.is_win():
                         if self.current_level < 4:
@@ -61,9 +64,12 @@ class Game:
         self.board.draw(self.screen)
 
     def is_win(self):
+        """function for win condition"""
         for i in range(len(self.board.map)):
             for j in range(len(self.board.map[i])):
                 if self.requirements.map[0][j] != "None":
                     if self.board.map[i][j] != self.requirements.map[0][j].name:
                         return False
         return True
+
+
