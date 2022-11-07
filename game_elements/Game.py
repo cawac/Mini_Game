@@ -21,7 +21,7 @@ class Game:
     def load(self, level):
         with open(f"levels/{level}.json") as json:
             level = load(json)
-            self.screen = pygame.display.set_mode((1, 1))  # change to the real resolution
+            self.screen = pygame.display.set_mode((1, 1))
             self.requirements = Requirements(level["path_to_requirements_bar"], level["requirements"])
             self.board = Board(level["path_to_background_image"], level["position_of_locked_blocks"],
                                level["requirements"], level["columns"], level["lines"], 0,
@@ -39,19 +39,17 @@ class Game:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        print(pygame.mouse.get_pos())
                         pos1 = self.board.get_pos_of_block(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
                 elif event.type == pygame.MOUSEBUTTONUP:
                     if event.button == 1:
-                        print(pygame.mouse.get_pos())
                         pos2 = self.board.get_pos_of_block(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
-                        self.board.move(pos1, pos2)
-                        if self.is_win():
-                            if self.current_level < 4:
-                                self.current_level += 1
-                                self.load(str(self.current_level))
-                            else:
-                                running = False
+                    self.board.move(pos1, pos2)
+                    if self.is_win():
+                        if self.current_level < 4:
+                            self.current_level += 1
+                            self.load(str(self.current_level))
+                        else:
+                            running = False
             self.screen.fill((0, 0, 0))
             self.draw()
             pygame.display.flip()

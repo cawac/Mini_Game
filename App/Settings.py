@@ -1,11 +1,7 @@
-from json import load
-from game_elements import Rect
-
-
 class Settings:
-    def __init__(self, path_to_settings):
+    def __init__(self):
         self.FPS = 60
-        with open(path_to_settings, "r") as file:
-            config = load(file)
-            self.block_rect = Rect.Rect(width=config["block_rect"][2], height=config["block_rect"][3])
-            self.music = config["path_to_music"]
+        self.block_rect = dict()
+        self.block_rect["width"] = 40
+        self.block_rect["height"] = 35
+        self.music = "music/1.mp3"
