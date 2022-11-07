@@ -1,6 +1,6 @@
-from App.App import App
+from game_elements.Game import Game
 
 
 if __name__ == '__main__':
-    a = App()
-    a.run()
+    game = Game()
+    game.run()

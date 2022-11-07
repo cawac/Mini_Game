@@ -2,10 +2,11 @@ from game_elements.Requirements import Requirements
 from game_elements.Board import Board
 import pygame
 from json import load
+from game_elements.Settings import Settings
 
 
 class Game:
-    def __init__(self, settings):
+    def __init__(self, settings=Settings()):
         self.board = None
         self.requirements = None
         self.screen = None
